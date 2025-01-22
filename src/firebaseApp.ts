@@ -18,5 +18,3 @@ try {
 }
 
 const firebase = initializeApp(firebaseConfig);
-
-export default firebase;
