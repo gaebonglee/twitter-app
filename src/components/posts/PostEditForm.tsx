@@ -14,9 +14,25 @@ export default function PostEditForm() {
   const [content, setContent] = useState<string>("");
   const [hashTag, setHashTag] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [imageFile, setImageFile] = useState<string | null>(null);
 
   const navigate = useNavigate();
-  const handleFileUpload = () => {};
+
+  const handleFileUpload = (e: any) => {
+    const {
+      target: { files },
+    } = e;
+
+    const file = files?.[0];
+    const fileReader = new FileReader();
+    fileReader?.readAsDataURL(file);
+
+    fileReader.onloadend = (e: any) => {
+      const { result } = e?.currentTarget;
+      setImageFile(result);
+    };
+  };
 
   const getPost = useCallback(async () => {
     if (params.id) {
@@ -29,6 +45,7 @@ export default function PostEditForm() {
   }, [params.id]);
 
   const onSubmit = async (e: any) => {
+    setIsSubmitting(true);
     e.preventDefault();
     try {
       if (post) {
@@ -75,6 +92,10 @@ export default function PostEditForm() {
     }
   };
 
+  const handleDeleteImage = () => {
+    setImageFile(null);
+  };
+
   useEffect(() => {
     if (params.id) getPost();
   }, [getPost, params.id]);
@@ -113,17 +134,37 @@ export default function PostEditForm() {
         />
       </div>
       <div className="post-form__submit-area">
-        <label htmlFor="file-input" className="post-form__file">
-          <FiImage className="post-form__file-icon" />
-        </label>
+        <div className="post-form__image-area">
+          <label htmlFor="file-input" className="post-form__file">
+            <FiImage className="post-form__file-icon" />
+          </label>
+          <input
+            type="file"
+            name="file-input"
+            id="file-input"
+            accept="image/*"
+            onChange={handleFileUpload}
+            className="hidden"
+          />
+          {imageFile && (
+            <div className="post-form__attachment">
+              <img src={imageFile} alt="attachment" width={100} height={100} />
+              <button
+                className="post-form__clear-btn"
+                type="button"
+                onClick={handleDeleteImage}
+              >
+                Clear
+              </button>
+            </div>
+          )}
+        </div>
         <input
-          type="file"
-          name="file-input"
-          accept="image/*"
-          onChange={handleFileUpload}
-          className="hidden"
+          type="submit"
+          value="수정"
+          className="post-form__submit-btn"
+          disabled={isSubmitting}
         />
-        <input type="submit" value="수정" className="post-form__submit-btn" />
       </div>
     </form>
   );

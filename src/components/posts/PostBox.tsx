@@ -23,6 +23,15 @@ export default function PostBox({ post }: PostBoxProps) {
   const handleDelete = async () => {
     const confirm = window.confirm("해당 게시글을 삭제하시겠습니까?");
     if (confirm) {
+      //fire storage와 firestore는 별개임
+      //firestorage에서 이미지를 삭제할 수 있는 로직 작성
+
+      if (post?.imageUrl) {
+        deleteObject(imageRef).catch((error) => {
+          console.log(error);
+        });
+      }
+
       if (post?.imageUrl) {
         deleteObject(imageRef).catch((error) => {
           console.log(error);
