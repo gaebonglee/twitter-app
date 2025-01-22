@@ -11,21 +11,34 @@ import NotificationsPage from "pages/notifications";
 import LoginPage from "pages/users/login";
 import SignUpPage from "pages/users/signup";
 
-export default function Router() {
+interface RouterProps {
+  isAuthenticated: boolean;
+}
+
+export default function Router({ isAuthenticated }: RouterProps) {
   return (
     <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/posts" element={<PostListPage />} />
-      <Route path="/posts/:id" element={<PostDetail />} />
-      <Route path="/posts/new" element={<PostNew />} />
-      <Route path="/posts/edit/:id" element={<PostEdit />} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/proflie/edit" element={<ProfileEdit />} />
-      <Route path="/notifications" element={<NotificationsPage />} />
-      <Route path="/search" element={<SearchPage />} />
-      <Route path="/users/login" element={<LoginPage />} />
-      <Route path="/users/signup" element={<SignUpPage />} />
-      <Route path="*" element={<Navigate replace to="/" />} />
+      {isAuthenticated ? (
+        <>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/posts" element={<PostListPage />} />
+          <Route path="/posts/:id" element={<PostDetail />} />
+          <Route path="/posts/new" element={<PostNew />} />
+          <Route path="/posts/edit/:id" element={<PostEdit />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/proflie/edit" element={<ProfileEdit />} />
+          <Route path="/notifications" element={<NotificationsPage />} />
+          <Route path="/search" element={<SearchPage />} />
+        </>
+      ) : (
+        <>
+          <Route path="/users/login" element={<LoginPage />} />
+          <Route path="/users/signup" element={<SignUpPage />} />
+          <Route path="*" element={<Navigate replace to="/users/login" />} />
+        </>
+      )}
     </Routes>
   );
+}
+{
 }
