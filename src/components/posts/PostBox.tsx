@@ -3,8 +3,8 @@ import {
   arrayRemove,
   arrayUnion,
   deleteDoc,
-  updateDoc,
   doc,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "firebaseApp";
 import { PostProps } from "pages/home";
@@ -18,6 +18,8 @@ import { storage } from "firebaseApp";
 
 import { toast } from "react-toastify";
 import FollowingBox from "components/following/FollowingBox";
+
+import useTranslation from "hooks/useTranslation";
 interface PostBoxProps {
   post: PostProps;
 }
@@ -26,36 +28,30 @@ export default function PostBox({ post }: PostBoxProps) {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const imageRef = ref(storage, post?.imageUrl);
+  const t = useTranslation();
 
   const toggleLike = async () => {
     const postRef = doc(db, "posts", post.id);
 
     if (user?.uid && post?.likes?.includes(user?.uid)) {
-      //사용자가 좋아요를 미리 한 경우, 좋아요를 취소한다.
+      // 사용자가 좋아요를 미리 한 경우 -> 좋아요를 취소한다
       await updateDoc(postRef, {
         likes: arrayRemove(user?.uid),
         likeCount: post?.likeCount ? post?.likeCount - 1 : 0,
       });
     } else {
+      // 사용자가 좋아요를 하지 않은 경우 -> 좋아요를 추가한다
       await updateDoc(postRef, {
         likes: arrayUnion(user?.uid),
         likeCount: post?.likeCount ? post?.likeCount + 1 : 1,
       });
-      //사용자가 좋아요를 하지 않은 경우, 좋아요를 추가한다.
     }
   };
 
   const handleDelete = async () => {
     const confirm = window.confirm("해당 게시글을 삭제하시겠습니까?");
     if (confirm) {
-      //fire storage와 firestore는 별개임
-      //firestorage에서 이미지를 삭제할 수 있는 로직 작성
-
-      if (post?.imageUrl) {
-        deleteObject(imageRef).catch((error) => {
-          console.log(error);
-        });
-      }
+      // 스토리지 이미지 먼저 삭제
 
       if (post?.imageUrl) {
         deleteObject(imageRef).catch((error) => {
@@ -121,10 +117,10 @@ export default function PostBox({ post }: PostBoxProps) {
               className="post__delete"
               onClick={handleDelete}
             >
-              Delete
+              {t("BUTTON_DELETE")}
             </button>
             <button type="button" className="post__edit">
-              <Link to={`/posts/edit/${post?.id}`}>Edit</Link>
+              <Link to={`/posts/edit/${post?.id}`}>{t("BUTTON_EDIT")}</Link>
             </button>
           </>
         )}
