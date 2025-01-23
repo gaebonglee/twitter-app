@@ -10,7 +10,7 @@ $btn-shadow: 0px 2px 0px rgba(0, 0, 0, 0.5);
     background: linear-gradient(to top, #fffaa2, #ffffff);
     margin: 10px 15px;
     padding: 10px;
-    border: 2px solid #202020;
+    border: 2px solid$black;
     box-shadow: 0px 4px 1px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
   }
@@ -30,6 +30,7 @@ $btn-shadow: 0px 2px 0px rgba(0, 0, 0, 0.5);
       width: 48px;
       height: 48px;
       border-radius: 50%;
+      border: 2px solid $black;
     }
   }
 

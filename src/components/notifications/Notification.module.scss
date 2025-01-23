@@ -1,5 +1,5 @@
 $grayText: #9ca3af;
-$primaryColor: #60a5fa;
+$danger: #ff0073;
 $border: #708090;
 
 .notification {
@@ -29,6 +29,6 @@ $border: #708090;
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: $primaryColor;
+    background-color: $danger;
   }
 }

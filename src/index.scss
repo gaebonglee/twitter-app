@@ -479,6 +479,7 @@ body {
       &-icon {
         width: 40px;
         height: 40px;
+        border: 2px solid $black;
         border-radius: 50%;
         margin-right: 10px;
       }
@@ -556,9 +557,10 @@ body {
     height: 20px;
     padding: 10px;
     border-radius: 0.3rem;
-    border: 1px solid lightgray;
+    border: 2px solid $black;
     width: 96%;
     max-width: 680px;
+    outline: none;
   }
 
   &__block {
@@ -595,7 +597,7 @@ body {
 
     &:hover,
     &:focus {
-      background-color: $activeBorder;
+      box-shadow: inset $btn-shadow;
     }
   }
 
@@ -611,28 +613,23 @@ body {
   &__link {
     margin-left: 10px;
     text-decoration: none;
-    color: $grayText;
+    color: $white;
 
     &:hover,
     &:focus {
-      color: $gray;
+      color: $black;
     }
   }
 
   &__error {
-    color: red;
+    color: $danger;
+    font-weight: 600;
   }
 
   &__btn--google {
     @extend .form__btn--submit;
     background: $background;
     color: $white;
-
-    &:hover,
-    &:focus {
-      background-color: $activeBorder;
-      color: $white;
-    }
   }
 
   &__btn--github {
@@ -642,7 +639,7 @@ body {
 
     &:hover,
     &:focus {
-      background-color: $activeBg;
+      background-color: $gray;
       color: $white;
     }
   }

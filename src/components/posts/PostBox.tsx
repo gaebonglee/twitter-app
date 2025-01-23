@@ -23,6 +23,7 @@ import useTranslation from "hooks/useTranslation";
 interface PostBoxProps {
   post: PostProps;
 }
+const PROFILE_DEFAULT_URL = "/default-img.png";
 
 export default function PostBox({ post }: PostBoxProps) {
   const { user } = useContext(AuthContext);
@@ -76,7 +77,8 @@ export default function PostBox({ post }: PostBoxProps) {
               className="post__box-profile-img"
             />
           ) : (
-            <FaUserCircle className="post__box-profile-icon" />
+            <img src={PROFILE_DEFAULT_URL} className="post__box-profile-icon"/>
+            // <FaUserCircle className="post__box-profile-icon" />
           )}
           <div className="post__flex--between">
             <div className="post__flex">

@@ -19,6 +19,7 @@ interface CommentBoxProps {
   data: CommentProps;
   post: PostProps;
 }
+const PROFILE_DEFAULT_URL = "/default-img.png";
 
 export default function CommentBox({ data, post }: CommentBoxProps) {
   const { user } = useContext(AuthContext);
@@ -44,7 +45,7 @@ export default function CommentBox({ data, post }: CommentBoxProps) {
         <div className={styles.comment__borderBox}>
           <div className={styles.comment__imgBox}>
             <div className={styles.comment__flexBox}>
-              <img src={`/basic-img.png`} alt="profile" />
+              <img src={PROFILE_DEFAULT_URL} alt="profile" />
               <div className={styles.comment__email}>{data?.email}</div>
               <div className={styles.comment__createdAt}>{data?.createdAt}</div>
             </div>
