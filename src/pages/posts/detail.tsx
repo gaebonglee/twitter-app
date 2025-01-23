@@ -35,12 +35,14 @@ export default function PostDetail() {
         <>
           <PostBox post={post} />
           <CommentForm post={post} />
-          {post?.comments
-            ?.slice(0)
-            ?.reverse()
-            ?.map((data: CommentProps, index: number) => (
-              <CommentBox data={data} key={index} post={post} />
-            ))}
+          <div className="post__comment-wrap">
+            {post?.comments
+              ?.slice(0)
+              ?.reverse()
+              ?.map((data: CommentProps, index: number) => (
+                <CommentBox data={data} key={index} post={post} />
+              ))}
+          </div>
         </>
       ) : (
         <Loader />

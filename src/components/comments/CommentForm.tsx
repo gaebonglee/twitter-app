@@ -83,15 +83,18 @@ export default function CommentForm({ post }: CommentFormProps) {
 
   return (
     <form className="post-form" onSubmit={onSubmit}>
-      <textarea
-        className="post-form__textarea"
-        name="comment"
-        id="comment"
-        required
-        placeholder="What is happening?"
-        onChange={onChange}
-        value={comment}
-      />
+      <div className="post-form-wrap">
+        <textarea
+          className="post-form__textarea"
+          name="comment"
+          id="comment"
+          required
+          placeholder="What is happening?"
+          onChange={onChange}
+          value={comment}
+        />
+      </div>
+
       <div className="post-form__submit-area">
         <div />
         <input

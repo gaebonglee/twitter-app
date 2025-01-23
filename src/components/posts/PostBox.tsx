@@ -28,7 +28,7 @@ export default function PostBox({ post }: PostBoxProps) {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const imageRef = ref(storage, post?.imageUrl);
-  const t = useTranslation();
+  const translate = useTranslation();
 
   const toggleLike = async () => {
     const postRef = doc(db, "posts", post.id);
@@ -117,10 +117,12 @@ export default function PostBox({ post }: PostBoxProps) {
               className="post__delete"
               onClick={handleDelete}
             >
-              {t("BUTTON_DELETE")}
+              {translate("BUTTON_DELETE")}
             </button>
             <button type="button" className="post__edit">
-              <Link to={`/posts/edit/${post?.id}`}>{t("BUTTON_EDIT")}</Link>
+              <Link to={`/posts/edit/${post?.id}`}>
+                {translate("BUTTON_EDIT")}
+              </Link>
             </button>
           </>
         )}

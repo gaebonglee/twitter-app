@@ -520,6 +520,11 @@ body {
       }
     }
   }
+  &__comment {
+    &-wrap {
+      margin: 30px 15px;
+    }
+  }
 }
 
 // form 레이아웃
