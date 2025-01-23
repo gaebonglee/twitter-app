@@ -25,7 +25,7 @@ export default function ProfilePage() {
   const [likePosts, setLikePosts] = useState<PostProps[]>([]);
   const navigate = useNavigate();
   const [language, setLanguage] = useRecoilState(languageState);
-  const t = useTranslation();
+  const translation = useTranslation();
 
   const onClickLanguage = () => {
     setLanguage(language === "ko" ? "en" : "ko");
@@ -70,7 +70,7 @@ export default function ProfilePage() {
     <div className="home">
       <div className="home__top">
         <div className="home__title">
-          <div className="home__title-text">{t("MENU_PROFILE")}</div>
+          <div className="home__title-text">{translation("MENU_PROFILE")}</div>
         </div>
         <div className="profile">
           <img
@@ -86,7 +86,7 @@ export default function ProfilePage() {
               className="profile__btn"
               onClick={() => navigate("/profile/edit")}
             >
-              {t("BUTTON_EDIT_PROFILE")}
+              {translation("BUTTON_EDIT_PROFILE")}
             </button>
             <button
               type="button"
@@ -99,7 +99,7 @@ export default function ProfilePage() {
         </div>
         <div className="profile__text">
           <div className="profile__name">
-            {user?.displayName || t("PROFILE_NAME")}
+            {user?.displayName || translation("PROFILE_NAME")}
           </div>
           <div className="profile__email">{user?.email}</div>
         </div>
@@ -108,7 +108,7 @@ export default function ProfilePage() {
             className={`home__tab ${activeTab === "my" && "home__tab--active"}`}
             onClick={() => setActiveTab("my")}
           >
-            {t("TAB_MY")}
+            {translation("TAB_MY")}
           </div>
           <div
             className={`home__tab ${
@@ -116,7 +116,7 @@ export default function ProfilePage() {
             }`}
             onClick={() => setActiveTab("like")}
           >
-            {t("TAB_LIKES")}
+            {translation("TAB_LIKES")}
           </div>
         </div>
 
@@ -126,7 +126,7 @@ export default function ProfilePage() {
               myPosts?.map((post) => <PostBox post={post} key={post.id} />)
             ) : (
               <div className="post__no-posts">
-                <div className="post__text">{t("NO_POSTS")}</div>
+                <div className="post__text">{translation("NO_POSTS")}</div>
               </div>
             )}
           </div>
@@ -137,7 +137,7 @@ export default function ProfilePage() {
               likePosts?.map((post) => <PostBox post={post} key={post.id} />)
             ) : (
               <div className="post__no-posts">
-                <div className="post__text">{t("NO_POSTS")}</div>
+                <div className="post__text">{translation("NO_POSTS")}</div>
               </div>
             )}
           </div>
