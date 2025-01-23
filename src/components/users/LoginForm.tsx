@@ -10,12 +10,14 @@ import {
 } from "firebase/auth";
 import { app } from "firebaseApp";
 import { toast } from "react-toastify";
+import useTranslation from "hooks/useTranslation";
 
 export default function LoginForm() {
   const [error, setError] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
+  const translate = useTranslation();
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
@@ -90,9 +92,9 @@ export default function LoginForm() {
 
   return (
     <form className="form form--lg" onSubmit={onSubmit}>
-      <div className="form__title">로그인</div>
+      <div className="form__title">{translate("MENU_LOGIN")}</div>
       <div className="form__block">
-        <label htmlFor="email">이메일</label>
+        <label htmlFor="email">{translate("FORM_EMAIL")}</label>
         <input
           type="text"
           name="email"
@@ -103,7 +105,7 @@ export default function LoginForm() {
         />
       </div>
       <div className="form__block">
-        <label htmlFor="password">비밀번호</label>
+        <label htmlFor="password">{translate("FORM_PASSWORD")}</label>
         <input
           type="password"
           name="password"
@@ -114,9 +116,9 @@ export default function LoginForm() {
         />
       </div>
       <div className="form__block">
-        계정이 없으신가요?
+        {translate("NO_ACCOUNT")}
         <Link to="/users/signup" className="form__link">
-          회원가입하기
+          {translate("SIGNUP_LINK")}
         </Link>
       </div>
       <div className="form__block--lg">
@@ -125,7 +127,7 @@ export default function LoginForm() {
           className="form__btn--submit"
           disabled={error?.length > 0}
         >
-          로그인
+          {translate("MENU_LOGIN")}
         </button>
       </div>
       <div className="form__block">
@@ -135,7 +137,7 @@ export default function LoginForm() {
           className="form__btn--google"
           onClick={onClickSocialLogin}
         >
-          Google로 로그인
+          {translate("LOGIN_WITH_GOOGLE")}
         </button>
       </div>
       <div className="form__block">
@@ -145,7 +147,7 @@ export default function LoginForm() {
           className="form__btn--github"
           onClick={onClickSocialLogin}
         >
-          Github으로 로그인
+          {translate("LOGIN_WITH_GITHUB")}
         </button>
       </div>
     </form>

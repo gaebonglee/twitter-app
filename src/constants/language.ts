@@ -127,6 +127,7 @@ const TRANSLATIONS = {
     ko: "계정이 있으신가요?",
     en: "Already have account?",
   },
+  
   LOGIN_WITH_GOOGLE: {
     ko: "Google 로그인",
     en: "Continue with Google",
