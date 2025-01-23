@@ -109,69 +109,76 @@ export default function PostForm() {
 
   return (
     <form className="post-form" onSubmit={onSubmit}>
-      <textarea
-        className="post-form__textarea"
-        required
-        name="content"
-        id="content"
-        placeholder={t("POST_PLACEHOLDER")}
-        onChange={onChange}
-        value={content}
-      />
-      <div className="post-form__hashtags">
-        <span className="post-form__hashtags-outputs">
-          {tags?.map((tag, index) => (
-            <span
-              className="post-form__hashtags-tag"
-              key={index}
-              onClick={() => removeTag(tag)}
-            >
-              #{tag}
-            </span>
-          ))}
-        </span>
-        <input
-          className="post-form__input"
-          name="hashtag"
-          id="hashtag"
-          placeholder={t("POST_HASHTAG")}
-          onChange={onChangeHashTag}
-          onKeyUp={handleKeyUp}
-          value={hashTag}
+      <div className="post-form-wrap">
+        <textarea
+          className="post-form__textarea"
+          required
+          name="content"
+          id="content"
+          placeholder={t("POST_PLACEHOLDER")}
+          onChange={onChange}
+          value={content}
         />
-      </div>
-      <div className="post-form__submit-area">
-        <div className="post-form__image-area">
-          <label htmlFor="file-input" className="post-form__file">
-            <FiImage className="post-form__file-icon" />
-          </label>
-          <input
-            type="file"
-            name="file-input"
-            id="file-input"
-            accept="image/*"
-            onChange={handleFileUpload}
-            className="hidden"
-          />
-          {imageFile && (
-            <div className="post-form__attachment">
-              <img src={imageFile} alt="attachment" width={100} height={100} />
-              <button
-                className="post-form__clear-btn"
-                type="button"
-                onClick={handleDeleteImage}
+        <div className="post-form__hashtags">
+          <span className="post-form__hashtags-outputs">
+            {tags?.map((tag, index) => (
+              <span
+                className="post-form__hashtags-tag"
+                key={index}
+                onClick={() => removeTag(tag)}
               >
-                {t("BUTTON_DELETE")}
-              </button>
-            </div>
-          )}
+                #{tag}
+              </span>
+            ))}
+          </span>
+          <input
+            className="post-form__input"
+            name="hashtag"
+            id="hashtag"
+            placeholder={t("POST_HASHTAG")}
+            onChange={onChangeHashTag}
+            onKeyUp={handleKeyUp}
+            value={hashTag}
+          />
         </div>
-        <input
-          type="submit"
-          value="Tweet"
-          className="post-form__submit-btn"
-          disabled={isSubmitting}
-        />
+        <div className="post-form__submit-area">
+          <div className="post-form__image-area">
+            <label htmlFor="file-input" className="post-form__file">
+              <FiImage className="post-form__file-icon" />
+            </label>
+            <input
+              type="file"
+              name="file-input"
+              id="file-input"
+              accept="image/*"
+              onChange={handleFileUpload}
+              className="hidden"
+            />
+            {imageFile && (
+              <div className="post-form__attachment">
+                <img
+                  src={imageFile}
+                  alt="attachment"
+                  width={100}
+                  height={100}
+                />
+                <button
+                  className="post-form__clear-btn"
+                  type="button"
+                  onClick={handleDeleteImage}
+                >
+                  {t("BUTTON_DELETE")}
+                </button>
+              </div>
+            )}
+          </div>
+          <input
+            type="submit"
+            value="Tweet"
+            className="post-form__submit-btn"
+            disabled={isSubmitting}
+          />
+        </div>
       </div>
     </form>
   );

@@ -9,8 +9,7 @@ body {
 }
 
 * {
-  background-color: $background;
-  color: $white;
+  color: $black;
 }
 
 .layout {
@@ -20,6 +19,8 @@ body {
   border-left: 1px solid $border;
   border-right: 1px solid $border;
   min-height: 100vh;
+  background: linear-gradient(to bottom, $background, $white);
+  z-index: 1;
 }
 
 .button {
@@ -60,18 +61,18 @@ body {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  background-color: transparent;
-  color: $white;
+  background: linear-gradient(to top, $background, $white);
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    background-color: transparent;
+    // background-color: transparent;
     backdrop-filter: blur(10px);
     &--text {
       background-color: transparent;
     }
     button {
+      color: $black;
       border: none;
       display: flex;
       gap: 8px;
@@ -134,25 +135,32 @@ body {
 
 // home 레이아웃
 .home {
+  padding-bottom: 30px;
   &__search-div {
     display: flex;
     justify-content: center;
+    background-color: $white;
+    margin: $common-margin;
+    padding: $common-padding;
+    border: 2px solid $black;
+    box-shadow: $box-shadow;
+    border-radius: 20px;
   }
 
   &__search {
     @extend .post-form__input;
-    background-color: $backgroundLight;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    padding: 12px;
-    width: 90% !important;
-    font-size: 15px;
-    font-weight: 600;
+    // background-color: $backgroundLight;
+    // border-radius: 20px;
+    // margin-bottom: 20px;
+    // padding: 12px;
+    // width: 90% !important;
+    // font-size: 15px;
+    // font-weight: 600;
+    margin-top: 0 !important;
 
-    &:focus {
-      border: 1px solid $primaryColor;
-      background-color: $activeBg;
-    }
+    // &:focus {
+    //   background-color: $activeBg;
+    // }
   }
 
   &__top {
@@ -162,10 +170,17 @@ body {
 
   &__title {
     background-color: transparent;
-    width: 90%;
     padding: 16px;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 25px;
+
+    &-text {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      color: $white;
+      -webkit-text-stroke: 1px $black;
+    }
   }
 
   &__tabs {
@@ -184,7 +199,7 @@ body {
 
     &--active {
       font-weight: 700;
-      border-bottom: 2px solid $activeBorder;
+      border-bottom: 3px solid $black;
     }
 
     &:hover,
@@ -195,14 +210,22 @@ body {
 }
 
 .post-form {
+  &-wrap {
+    background-color: $white;
+    margin: $common-margin;
+    padding: $common-padding;
+    border: 2px solid $black;
+    box-shadow: $box-shadow;
+    border-radius: $common-borderRadius;
+  }
   &__profile {
-    padding: 16px;
+    padding: $common-padding;
 
     .post-form__input {
       border-bottom: 1px solid $gray;
       padding: 8px 2px;
       font-size: 16px;
-      width: 100%;
+      width: 99%;
       margin-bottom: 20px;
 
       &:active,
@@ -227,11 +250,13 @@ body {
   &__clear-btn {
     @extend .button;
     padding: 0.2rem 0.8rem;
-    background-color: $danger;
+    background: linear-gradient(to top, $danger, $white);
+    border: 2px solid $black;
+    box-shadow: $btn-shadow;
 
     &:hover,
     &:focus {
-      background-color: $dangerDark;
+      box-shadow: inset $btn-shadow;
     }
   }
 
@@ -258,7 +283,7 @@ body {
 
     &-tag {
       font-size: 14px;
-      border: 1px solid $primaryColor;
+      border: 2px solid $primaryColor;
       color: $primaryColor;
       border-radius: 10px;
       padding: 2px 8px;
@@ -268,7 +293,7 @@ body {
       &:hover,
       &:focus {
         color: $activeBorder;
-        border: 1px solid $activeBorder;
+        border: 2px solid $activeBorder;
       }
     }
   }
@@ -294,6 +319,7 @@ body {
 
   &__submit-area {
     display: flex;
+
     padding: 0.75rem 1rem;
     justify-content: space-between;
     border-bottom: 1px solid $border;
@@ -315,7 +341,14 @@ body {
   &__submit-btn {
     @extend .button;
     padding: 0.5rem 1rem;
-    background-color: $primaryColor;
+    background: linear-gradient(to top, $green, $white);
+    border: 2px solid $black;
+    box-shadow: $btn-shadow;
+
+    &:hover,
+    &:focus {
+      box-shadow: inset $btn-shadow;
+    }
   }
 }
 
@@ -326,9 +359,14 @@ body {
   }
 
   &__header {
+    padding-top: 10px;
+    padding-left: 10px;
     button {
-      border: none;
-      padding: 16px;
+      display: flex;
+      align-items: center;
+      border-radius: 50%;
+      border: 2px solid $grayDark;
+      padding: $common-padding;
     }
 
     &-btn {
@@ -339,7 +377,12 @@ body {
   }
 
   &__no-posts {
-    padding: 16px;
+    background-color: $white;
+    margin: $common-margin;
+    padding: $common-padding;
+    border: 2px solid $black;
+    box-shadow: $box-shadow;
+    border-radius: $common-borderRadius;
 
     .post__text {
       font-size: 14px;
@@ -365,37 +408,41 @@ body {
 
   &__follow-btn {
     @extend .button;
-    background-color: $white;
-    color: $activeBorder;
+    background: linear-gradient(to top, $green, $white);
+    border: 2px solid $black;
+    box-shadow: $btn-shadow;
 
     &:hover,
     &:focus {
-      background-color: $activeBorder;
-      color: $white;
+      box-shadow: inset $btn-shadow;
     }
   }
 
   &__following-btn {
     @extend .button;
-    background-color: $activeBorder;
-    color: $white;
+    background: linear-gradient(to top, $green, $white);
+    border: 2px solid $black;
+    box-shadow: $btn-shadow;
 
     &:hover,
     &:focus {
-      background-color: $white;
-      color: $activeBorder;
+      box-shadow: inset $btn-shadow;
     }
   }
 
   &__email,
   &__createdAt {
     font-size: 12px;
-    color: $grayText;
+    color: $grayDark;
   }
 
   &__box {
-    padding: 10px 0px;
-    border-bottom: 1px solid $border;
+    background-color: $white;
+    margin: $common-margin;
+    padding: $common-padding;
+    border: 2px solid $black;
+    box-shadow: $box-shadow;
+    border-radius: $common-borderRadius;
 
     a {
       text-decoration: none;
@@ -432,16 +479,20 @@ body {
         @extend .button;
 
         &.post__delete {
-          background-color: $danger;
+          background: linear-gradient(to top, $danger, $white);
+          border: 2px solid $black;
+          box-shadow: $btn-shadow;
 
           &:hover,
           &:focus {
-            background-color: $dangerDark;
+            box-shadow: inset $btn-shadow;
           }
         }
 
         &.post__edit {
-          background-color: $gray;
+          background: linear-gradient(to top, $yellow, $white);
+          border: 2px solid $black;
+          box-shadow: $btn-shadow;
 
           a {
             background-color: transparent;
@@ -449,7 +500,7 @@ body {
 
           &:hover,
           &:focus {
-            background-color: $grayDark;
+            box-shadow: inset $btn-shadow;
           }
         }
 
@@ -494,9 +545,11 @@ body {
 
   label {
     display: block;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 10px;
     margin-top: 20px;
+    color: $white;
+    -webkit-text-stroke: 1px $black;
   }
 
   &__btn--submit {
@@ -508,8 +561,9 @@ body {
     cursor: pointer;
     font-size: 16px;
     margin: 0 auto;
-    color: white;
-    background-color: $primaryColor;
+    background: linear-gradient(to top, $green, $white);
+    border: 2px solid $black;
+    box-shadow: $btn-shadow;
 
     &:hover,
     &:focus {
@@ -519,9 +573,11 @@ body {
 
   &__title {
     text-align: center;
-    font-size: 24px;
+    font-size: 27px;
     font-weight: 700;
     padding-bottom: 20px;
+    color: $white;
+    -webkit-text-stroke: 1px $black;
   }
 
   &__link {
@@ -541,8 +597,8 @@ body {
 
   &__btn--google {
     @extend .form__btn--submit;
-    background-color: $white;
-    color: $activeBorder;
+    background: $background;
+    color: $white;
 
     &:hover,
     &:focus {
@@ -553,7 +609,7 @@ body {
 
   &__btn--github {
     @extend .form__btn--submit;
-    background-color: black;
+    background: black;
     color: white;
 
     &:hover,
@@ -585,20 +641,24 @@ body {
 
   &__btn {
     @extend .button;
-    background-color: $primaryColor;
+    background: linear-gradient(to top, $yellow, $white);
+    border: 2px solid $black;
+    box-shadow: $btn-shadow;
 
     &:hover,
     &:focus {
-      background-color: $activeBorder;
+      box-shadow: inset $btn-shadow;
     }
 
     &--language {
       @extend .button;
-      background-color: $gray;
+      background: linear-gradient(to top, $activeBorder, $white);
+      border: 2px solid $black;
+      box-shadow: $btn-shadow;
 
       &:hover,
       &:focus {
-        background-color: $grayDark;
+        box-shadow: inset $btn-shadow;
       }
     }
   }
@@ -610,14 +670,13 @@ body {
 
   &__name {
     font-size: 16px;
-    color: $white;
     font-weight: 700;
     margin-bottom: 4px;
   }
 
   &__email {
     font-size: 14px;
-    color: $grayText;
+    color: $white;
     margin-bottom: 4px;
   }
 }

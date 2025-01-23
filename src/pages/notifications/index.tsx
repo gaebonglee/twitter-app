@@ -47,7 +47,7 @@ export default function NotificationsPage() {
     <div className="home">
       <div className="home__top">
         <div className="home__title">
-          <div className="hoome__title-text">Notification</div>
+          <div className="home__title-text">Notification</div>
         </div>
       </div>
       <div className="post">

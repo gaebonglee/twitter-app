@@ -69,7 +69,9 @@ export default function ProfilePage() {
   return (
     <div className="home">
       <div className="home__top">
-        <div className="home__title">{t("MENU_PROFILE")}</div>
+        <div className="home__title">
+          <div className="home__title-text">{t("MENU_PROFILE")}</div>
+        </div>
         <div className="profile">
           <img
             src={user?.photoURL || PROFILE_DEFAULT_URL}

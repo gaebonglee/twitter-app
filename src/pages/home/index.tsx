@@ -96,7 +96,9 @@ export default function HomePage() {
   return (
     <div className="home">
       <div className="home__top">
-        <div className="home__title">{t("MENU_HOME")}</div>
+        <div className="home__title">
+          <div className="home__title-text">{t("MENU_HOME")}</div>
+        </div>
         <div className="home__tabs">
           <div
             className={`home__tab ${

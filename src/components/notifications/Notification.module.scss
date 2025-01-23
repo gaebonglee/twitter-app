@@ -3,10 +3,11 @@ $primaryColor: #60a5fa;
 $border: #708090;
 
 .notification {
-  padding: 8px 16px;
+  margin: 10px 15px;
+  padding: 10px;
   border-bottom: 1px solid $border;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
 
   &:hover {
     font-weight: 600;
@@ -19,7 +20,7 @@ $border: #708090;
   }
 
   &__createdAt {
-    color: $grayText;
+    // color: $grayText;
     font-size: 12px;
     margin-bottom: 4px;
   }
