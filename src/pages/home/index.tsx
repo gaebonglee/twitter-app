@@ -42,7 +42,7 @@ export default function HomePage() {
   const [followingIds, setFollowingIds] = useState<string[]>([""]);
   const [activeTab, setActiveTab] = useState<tabType>("all");
   const { user } = useContext(AuthContext);
-  const t = useTranslation();
+  const translate = useTranslation();
 
   // 실시간 동기화로 user의 팔로잉 id 배열 가져오기
   const getFollowingIds = useCallback(async () => {
@@ -97,7 +97,7 @@ export default function HomePage() {
     <div className="home">
       <div className="home__top">
         <div className="home__title">
-          <div className="home__title-text">{t("MENU_HOME")}</div>
+          <div className="home__title-text">{translate("MENU_HOME")}</div>
         </div>
         <div className="home__tabs">
           <div
@@ -108,7 +108,7 @@ export default function HomePage() {
               setActiveTab("all");
             }}
           >
-            {t("TAB_ALL")}
+            {translate("TAB_ALL")}
           </div>
           <div
             className={`home__tab ${
@@ -118,7 +118,7 @@ export default function HomePage() {
               setActiveTab("following");
             }}
           >
-            {t("TAB_FOLLOWING")}
+            {translate("TAB_FOLLOWING")}
           </div>
         </div>
       </div>
@@ -130,7 +130,7 @@ export default function HomePage() {
             posts?.map((post) => <PostBox post={post} key={post.id} />)
           ) : (
             <div className="post__no-posts">
-              <div className="post__text">{t("NO_POSTS")}</div>
+              <div className="post__text">{translate("NO_POSTS")}</div>
             </div>
           )}
         </div>
@@ -141,7 +141,7 @@ export default function HomePage() {
             followingPosts?.map((post) => <PostBox post={post} key={post.id} />)
           ) : (
             <div className="post__no-posts">
-              <div className="post__text">{t("NO_POSTS")}</div>
+              <div className="post__text">{translate("NO_POSTS")}</div>
             </div>
           )}
         </div>

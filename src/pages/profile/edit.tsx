@@ -107,14 +107,17 @@ export default function ProfileEdit() {
       <PostHeader />
       <form className="post-form" onSubmit={onSubmit}>
         <div className="post-form__profile">
-          <input
-            type="text"
-            name="displayName"
-            className="post-form__input"
-            placeholder="이름"
-            onChange={onChange}
-            value={displayName}
-          />
+          <div className="post-form__profile-div">
+            <input
+              type="text"
+              name="displayName"
+              className="post-form__input"
+              placeholder="이름"
+              onChange={onChange}
+              value={displayName}
+            />
+          </div>
+
           {imageUrl && (
             <div className="post-form__attachment">
               <img src={imageUrl} alt="attachment" width={100} height={100} />

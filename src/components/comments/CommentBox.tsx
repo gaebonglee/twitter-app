@@ -1,5 +1,4 @@
 import { PostProps } from "pages/home";
-import { CommentFormProps } from "./CommentForm";
 
 import styles from "./Comment.module.scss";
 import { toast } from "react-toastify";
@@ -42,7 +41,7 @@ export default function CommentBox({ data, post }: CommentBoxProps) {
       <div className={styles.comment__borderBox}>
         <div className={styles.comment__imgBox}>
           <div className={styles.comment__flexBox}>
-            <img src={`/logo192.png`} alt="profile" />
+            <img src={`/basic-img.png`} alt="profile" />
             <div className={styles.comment__email}>{data?.email}</div>
             <div className={styles.comment__createdAt}>{data?.createdAt}</div>
           </div>

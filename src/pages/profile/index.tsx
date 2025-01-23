@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import useTranslation from "hooks/useTranslation";
 
 import { useRecoilState } from "recoil";
-const PROFILE_DEFAULT_URL = "/logo512.png";
+const PROFILE_DEFAULT_URL = "/default-img.png";
 type TabType = "my" | "like";
 
 export default function ProfilePage() {

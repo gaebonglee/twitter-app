@@ -220,18 +220,22 @@ body {
   }
   &__profile {
     padding: $common-padding;
+    &-div {
+      display: flex;
+      justify-content: center;
+      background-color: #ffffff;
+      margin: 10px 15px;
+      padding: 10px;
+      border: 2px solid #202020;
+      box-shadow: 0px 4px 1px rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+    }
 
     .post-form__input {
-      border-bottom: 1px solid $gray;
       padding: 8px 2px;
       font-size: 16px;
-      width: 99%;
-      margin-bottom: 20px;
-
-      &:active,
-      &:focus {
-        border-bottom: 1px solid white;
-      }
+      width: 100%;
+      margin: 0;
     }
   }
 
@@ -634,6 +638,7 @@ body {
   }
 
   &__image {
+    border: 2px solid $black;
     border-radius: 50%;
     width: 100px;
     height: 100px;
@@ -656,8 +661,7 @@ body {
       border: 2px solid $black;
       box-shadow: $btn-shadow;
 
-      &:hover,
-      &:focus {
+      &:hover {
         box-shadow: inset $btn-shadow;
       }
     }
