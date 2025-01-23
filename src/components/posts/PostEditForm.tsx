@@ -137,36 +137,41 @@ export default function PostEditForm() {
     <div className="post">
       <PostHeader />
       <form className="post-form" onSubmit={onSubmit}>
-        <textarea
-          className="post-form__textarea"
-          required
-          name="content"
-          id="content"
-          placeholder="What is happening?"
-          onChange={onChange}
-          value={content}
-        />
-        <div className="post-form__hashtags">
-          <span className="post-form__hashtags-outputs">
-            {tags?.map((tag, index) => (
-              <span
-                className="post-form__hashtags-tag"
-                key={index}
-                onClick={() => removeTag(tag)}
-              >
-                #{tag}
-              </span>
-            ))}
-          </span>
-          <input
-            className="post-form__input"
-            name="hashtag"
-            id="hashtag"
-            placeholder="해시태그 + 스페이스바 입력"
-            onChange={onChangeHashTag}
-            onKeyUp={handleKeyUp}
-            value={hashTag}
+        <div className="post-form-wrap">
+          <textarea
+            className="post-form__textarea"
+            required
+            name="content"
+            id="content"
+            placeholder="What is happening?"
+            onChange={onChange}
+            value={content}
           />
+        </div>
+
+        <div className="post-form__hashtags">
+          <div className="post-form__hashtags-wrap">
+            <span className="post-form__hashtags-outputs">
+              {tags?.map((tag, index) => (
+                <span
+                  className="post-form__hashtags-tag"
+                  key={index}
+                  onClick={() => removeTag(tag)}
+                >
+                  #{tag}
+                </span>
+              ))}
+            </span>
+            <input
+              className="post-form__input"
+              name="hashtag"
+              id="hashtag"
+              placeholder="해시태그 + 스페이스바 입력"
+              onChange={onChangeHashTag}
+              onKeyUp={handleKeyUp}
+              value={hashTag}
+            />
+          </div>
         </div>
         <div className="post-form__submit-area">
           <div className="post-form__image-area">

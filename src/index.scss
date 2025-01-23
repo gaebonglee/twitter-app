@@ -285,6 +285,17 @@ body {
       align-items: center;
     }
 
+    &-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #ffffff;
+      margin: 10px 15px;
+      padding: 10px;
+      border: 2px solid #202020;
+      box-shadow: 0px 4px 1px rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+    }
     &-tag {
       font-size: 14px;
       border: 2px solid $primaryColor;
@@ -299,6 +310,14 @@ body {
         color: $activeBorder;
         border: 2px solid $activeBorder;
       }
+    }
+    &-edit {
+      background-color: $white;
+      margin: $common-margin;
+      padding: $common-padding;
+      border: 2px solid $black;
+      box-shadow: $box-shadow;
+      border-radius: $common-borderRadius;
     }
   }
 
