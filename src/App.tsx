@@ -34,7 +34,7 @@ function App() {
     <RecoilRoot>
       <Layout>
         <ToastContainer
-          theme="dark"
+          // theme="dark"
           autoClose={1000}
           hideProgressBar
           newestOnTop
