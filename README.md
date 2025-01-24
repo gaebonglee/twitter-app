@@ -2,7 +2,6 @@
 * 📝 React와 Firebase를 이용한 실시간 트위터 클론 프로젝트 입니다.
 * https://twitter-app-lyart.vercel.app/
 
-
 ## 📌 프로젝트 소개
 ### ✨ 주요 기능
 #### ✅ 트윗 기능
